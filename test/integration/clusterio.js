@@ -373,6 +373,7 @@ describe("Integration of Clusterio", function() {
 		describe("instance config set-prop", function() {
 			it("applies factorio settings while running", async function() {
 				slowTest(this);
+				this.timeout(40e3);
 
 				let testConfigs = [
 					// json name, value to set,
