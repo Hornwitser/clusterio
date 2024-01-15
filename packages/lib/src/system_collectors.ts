@@ -4,7 +4,7 @@ import util from "util";
 import { Gauge } from "./prometheus";
 import { SystemMetrics } from "./data";
 
-function cpuModel() {
+export function cpuModel() {
 	const model = os.cpus()[0].model;
 	// Remove irelevant clutter
 	return model

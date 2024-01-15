@@ -64,8 +64,13 @@ export class HostDetails {
 		public name: string,
 		public id: number,
 		public connected: boolean,
-		public publicAddress?: string,
-		public tokenValidAfter?: number,
+		public kernel: string = "",
+		public machine: string = "",
+		public cpuModel: string = "",
+		public hostname: string = "",
+		public node: string = "",
+		public publicAddress: string = "",
+		public tokenValidAfter: number = 0,
 		/** Millisecond Unix timestamp this entry was last updated at */
 		public updatedAt = 0,
 		public isDeleted = false,
@@ -76,8 +81,13 @@ export class HostDetails {
 		"name": Type.String(),
 		"id": Type.Integer(),
 		"connected": Type.Boolean(),
-		"publicAddress": Type.Optional(Type.String()),
-		"tokenValidAfter": Type.Optional(Type.Number()),
+		"kernel": Type.String(),
+		"machine": Type.String(),
+		"cpuModel": Type.String(),
+		"hostname": Type.String(),
+		"node": Type.String(),
+		"publicAddress": Type.String(),
+		"tokenValidAfter": Type.Number(),
 		"updatedAt": Type.Optional(Type.Number()),
 		"isDeleted": Type.Optional(Type.Boolean()),
 	});
@@ -88,6 +98,11 @@ export class HostDetails {
 			json.name,
 			json.id,
 			json.connected,
+			json.kernel,
+			json.machine,
+			json.cpuModel,
+			json.hostname,
+			json.node,
 			json.publicAddress,
 			json.tokenValidAfter,
 			json.updatedAt,
@@ -108,17 +123,32 @@ export class HostListRequest {
 export class HostInfoUpdate {
 	constructor(
 		public name: string,
+		public kernel: string,
+		public machine: string,
+		public cpuModel: string,
+		public hostname: string,
+		public node: string,
 		public publicAddress: string,
 	) { }
 
 	static jsonSchema = Type.Object({
 		"name": Type.String(),
+		"kernel": Type.String(),
+		"machine": Type.String(),
+		"cpuModel": Type.String(),
+		"hostname": Type.String(),
+		"node": Type.String(),
 		"publicAddress": Type.String(),
 	});
 
 	static fromJSON(json: Static<typeof this.jsonSchema>) {
 		return new this(
 			json.name,
+			json.kernel,
+			json.machine,
+			json.cpuModel,
+			json.hostname,
+			json.node,
 			json.publicAddress,
 		);
 	}

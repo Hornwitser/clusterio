@@ -1,6 +1,7 @@
 import fs from "fs-extra";
 import path from "path";
 import events from "events";
+import os from "os";
 import pidusage from "pidusage";
 import setBlocking from "set-blocking";
 import phin from "phin";
@@ -1001,6 +1002,11 @@ export default class Host extends lib.Link {
 			new lib.HostInfoUpdateEvent(
 				new lib.HostInfoUpdate(
 					this.config.get("host.name"),
+					os.type(),
+					os.machine(),
+					lib.cpuModel(),
+					os.hostname(),
+					process.version,
 					this.config.get("host.public_address"),
 				),
 			),

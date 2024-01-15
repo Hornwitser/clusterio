@@ -35,6 +35,11 @@ export default class HostConnection extends BaseConnection {
 			registerData.version,
 			this.plugins,
 			true,
+			previousHostInfo?.kernel,
+			previousHostInfo?.machine,
+			previousHostInfo?.cpuModel,
+			previousHostInfo?.hostname,
+			previousHostInfo?.node,
 			previousHostInfo?.publicAddress,
 			previousHostInfo?.tokenValidAfter,
 			0,
@@ -153,6 +158,11 @@ export default class HostConnection extends BaseConnection {
 
 	async handleHostInfoUpdateEvent(event: lib.HostInfoUpdateEvent) {
 		this.info.name = event.update.name;
+		this.info.kernel = event.update.kernel;
+		this.info.machine = event.update.machine;
+		this.info.cpuModel = event.update.cpuModel;
+		this.info.hostname = event.update.hostname;
+		this.info.node = event.update.node;
 		this.info.publicAddress = event.update.publicAddress;
 		this._controller.hostsUpdated([this.info]);
 	}

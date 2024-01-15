@@ -78,13 +78,19 @@ export default function HostViewPage() {
 					{host["connected"] ? "Connected" : "Disconnected"}
 				</Tag>
 			</Descriptions.Item>
+			<Descriptions.Item label="Version">{host.version}</Descriptions.Item>
+			<Descriptions.Item label="Node.js">{host.node}</Descriptions.Item>
+			<Descriptions.Item label="OS Kernel">{host.kernel}</Descriptions.Item>
+			<Descriptions.Item label="Machine">{host.machine}</Descriptions.Item>
+			<Descriptions.Item label="Hostname" span={2}>{host.hostname}</Descriptions.Item>
+			<Descriptions.Item label="CPU Model" span={2}>{host.cpuModel}</Descriptions.Item>
 			<Descriptions.Item label="CPU Usage"><MetricCpuRatio metrics={metrics} /></Descriptions.Item>
 			<Descriptions.Item label="Cores"><MetricCpuUsed metrics={metrics} /></Descriptions.Item>
 			<Descriptions.Item label="Memory Usage"><MetricMemoryRatio metrics={metrics} /></Descriptions.Item>
 			<Descriptions.Item label="Memory"><MetricMemoryUsed metrics={metrics} /></Descriptions.Item>
 			<Descriptions.Item label="Disk Usage"><MetricDiskRatio metrics={metrics} /></Descriptions.Item>
 			<Descriptions.Item label="Disk"><MetricDiskUsed metrics={metrics} /></Descriptions.Item>
-			<Descriptions.Item label="Version">{host["version"]}</Descriptions.Item>
+			<Descriptions.Item label="Public Address">{host.publicAddress}</Descriptions.Item>
 			{
 				host.tokenValidAfter
 					? <Descriptions.Item label="Tokens valid after:">
